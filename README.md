@@ -1,4 +1,4 @@
-🎟️ Event Ticket Booking System
+# 🎟️ Event Ticket Booking System
 
 A full-stack ticket booking application built with Node.js (Express), TypeScript, MySQL, and Next.js. Features include nested event structures, real-time availability tracking, atomic transactions to prevent overbooking, and group discounts.
 
@@ -11,16 +11,16 @@ Automatic Discounts: 4+ tickets automatically triggers a groupDiscount flag.
 
 Real-time UI: Built-in toaster notifications and dynamic seat availability.
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 Backend: Node.js, Express, TypeScript, MySQL (mysql2/promise).
 
 Frontend: Next.js (App Router), Tailwind CSS, React Hot Toast.
 
 Database: Relational MySQL schema.
 
-⚙️ Backend Setup (Node.js)
+# ⚙️ Backend Setup (Node.js)
 Install Dependencies:
-# npm install
+npm install
 
 Database Configuration: Create a MySQL database and run the following schema to establish the structure:
 CREATE TABLE events (id INT AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), date DATETIME, location VARCHAR(255));
@@ -29,7 +29,7 @@ CREATE TABLE seat_rows (id INT AUTO_INCREMENT PRIMARY KEY, section_id INT, row_l
 CREATE TABLE bookings (id INT AUTO_INCREMENT PRIMARY KEY, event_id INT, section_id INT, seat_row_id INT, tickets INT, total_amount DECIMAL(10,2), discount_applied BOOLEAN DEFAULT FALSE, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (seat_row_id) REFERENCES seat_rows(id));
 
 
-Creating an Event
+# Creating an Event
 Endpoint: POST /api/events
 {
   "name": "Concert XYZ",
@@ -54,9 +54,9 @@ Endpoint: POST /api/events
 Run the Server:
 # nodemon server.ts
 
-💻 Frontend Setup (Next.js)
+# 💻 Frontend Setup (Next.js)
 Install Dependencies:
-# npm install
+npm install
 
 Run Development Mode:
 # npm run dev

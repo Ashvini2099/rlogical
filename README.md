@@ -28,6 +28,29 @@ CREATE TABLE sections (id INT AUTO_INCREMENT PRIMARY KEY, event_id INT, name VAR
 CREATE TABLE seat_rows (id INT AUTO_INCREMENT PRIMARY KEY, section_id INT, row_label VARCHAR(10), total_seats INT, FOREIGN KEY (section_id) REFERENCES sections(id) ON DELETE CASCADE);
 CREATE TABLE bookings (id INT AUTO_INCREMENT PRIMARY KEY, event_id INT, section_id INT, seat_row_id INT, tickets INT, total_amount DECIMAL(10,2), discount_applied BOOLEAN DEFAULT FALSE, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (seat_row_id) REFERENCES seat_rows(id));
 
+
+Creating an Event
+Endpoint: POST /api/events
+{
+  "name": "Concert XYZ",
+  "date": "2025-07-10T19:00:00Z",
+  "sections": [
+    {
+      "name": "Section A",
+      "rows": [
+        { "name": "Row 1", "totalSeats": 10 },
+        { "name": "Row 2", "totalSeats": 8 }
+      ]
+    },
+    {
+      "name": "Section B",
+      "rows": [
+        { "name": "Row 1", "totalSeats": 6 }
+      ]
+    }
+  ]
+}
+
 Run the Server:
 # nodemon server.ts
 
